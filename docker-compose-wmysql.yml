@@ -1,0 +1,62 @@
+version: "3.9"
+
+# Set DOCKER_UID DOCKER_GID at .env
+# SET USER DOCKER_UID BASED ON HOST USER ID 
+# SET USER DOCKER_GID BASED ON HOST USER GROUP ID 
+
+services:
+  app:
+    build:
+      args:
+        uid: ${DOCKER_UID} 
+        gid: ${DOCKER_GID}
+      context: ./
+      dockerfile: Dockerfile
+    image: laravel-taxi
+    container_name: laravel-taxi
+    restart: unless-stopped
+    volumes:
+        - ./:/var/www/html
+        - ./docker-config/nginx.conf:/etc/nginx/nginx.conf
+        - ./docker-config/php.ini:/etc/php7/conf.d/custom.ini
+    networks:
+        - docker_taxi
+    ports:
+        # Set docker port at .env
+        - ${DOCKER_PORT}:8080
+        
+  db:
+    image: mysql:8.0
+    container_name: mysql-taxi
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "3033:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - docker_taxi
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-taxi
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8585:80
+    networks:
+      - docker_taxi
+
+volumes: 
+  dbdata:
+    driver: local
+
+networks:
+  docker_taxi:
+    name: docker_taxi

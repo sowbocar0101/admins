@@ -1,0 +1,120 @@
+{{-- ====A+P+P+K+E+Y==== --}}
+
+{{-- CREATE --}}
+<div class="row display-n" id="content-create">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="float-right">
+                        <i>{!! trans('default.text.required-form') !!}</i>
+                    </div>
+                    <h2 class="title-form">@lang('default.text.add_data')</h2>
+                    <form method="post" @submit="saveData">
+                        @csrf
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-xl-2 col-form-label">@lang('default.new.image') <small class="text-danger">*</small></label>
+                            <div class="col-sm-9 col-xl-2">
+                                <input required type="file" name="image" class="dropify mb-3 img-lg" id="createDropify" data-max-file-size="1M" data-allowed-file-extensions="jpeg png jpg gif" ref="create" v-on:change="handleFileUpload('create')" v-on:clearElement="alert(1)"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-xl-2 col-form-label">@lang('default.new.username') <small class="text-danger">*</small></label>
+                            <div class="col-sm-9 col-xl-10">
+                                <input type="text" name="name" class="form-control" v-model="data.name" required style="border-radius: 5px;">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-xl-2 col-form-label">@lang('default.new.email') <small class="text-danger">*</small></label>
+                            <div class="col-sm-9 col-xl-10">
+                                <input type="email" name="email" class="form-control" v-model="data.email" required style="border-radius: 5px;">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-xl-2 col-form-label">@lang('default.new.phone') <small class="text-danger">*</small></label>
+                            <div class="col-sm-9 col-xl-10">
+                                <input type="number" name="phone" class="form-control" v-model="data.phone" required style="border-radius: 5px;">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-xl-2 col-form-label">@lang('default.new.password') <small class="text-danger">*</small></label>
+                            <div class="col-sm-9 col-xl-10">
+                                <input type="password" name="password" class="form-control" v-model="data.password" required style="border-radius: 5px;">
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <div>
+                                <div class="lds-dual-ring" v-if="loading"></div>
+                                <button type="submit" class="btn new-button new-bg-aqua action-header" style="width: 100%;" :disabled="loading"><h4 class="fon-weight-bold">@lang('default.new.save')</h4></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- EDIT --}}
+    <div class="row display-n" id="content-edit">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="float-right">
+                        <i>{!! trans('default.text.required-form') !!}</i>
+                    </div>
+                    <h2 class="title-form">@lang('default.text.edit_data')</h2>
+                    <form method="post" @submit="updateData">
+                        @csrf
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-xl-2 col-form-label">@lang('default.new.image')</label>
+                            <div class="col-sm-9 col-xl-2">
+                                    <input type="file" name="image" class="dropify mb-3 img-lg" id="editDropify"
+                                    data-max-file-size="1M" data-allowed-file-extensions="jpeg png jpg gif"
+                                    ref="edit"
+                                    v-on:change="handleFileUpload('edit')"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-xl-2 col-form-label">@lang('default.new.username') <small class="text-danger">*</small></label>
+                            <div class="col-sm-9 col-xl-10">
+                                <input type="text" name="name" class="form-control" v-model="data.name" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-xl-2 col-form-label">@lang('default.new.email') <small class="text-danger">*</small></label>
+                            <div class="col-sm-9 col-xl-10">
+                                <input type="email" name="email" class="form-control" v-model="data.email" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-xl-2 col-form-label">@lang('default.new.phone') <small class="text-danger">*</small></label>
+                            <div class="col-sm-9 col-xl-10">
+                                <input type="number" name="phone" class="form-control" v-model="data.phone" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-xl-2 col-form-label">@lang('default.new.password') </label>
+                            <div class="col-sm-9 col-xl-10">
+                                <input type="password" name="password" class="form-control" v-model="data.password">
+                                <small><i>@lang('default.alert.password')</i></small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-xl-2 col-form-label">@lang('default.new.status') </label>
+                            <div class="col-sm-9 col-xl-10">
+                                <select name="status" v-model="data.status" class="form-control">
+                                    <option value="1">@lang('default.new.active')</option>
+                                    <option value="0">@lang('default.new.inactive')</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <div>
+                                <div class="lds-dual-ring" v-if="loading"></div>
+                                <button type="submit" class="btn new-button new-bg-aqua action-header" style="width: 100%;" :disabled="loading"><h4 class="fon-weight-bold">@lang('default.new.save')</h4></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

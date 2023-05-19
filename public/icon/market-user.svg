@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="501" height="534" viewBox="0 0 501 534">
+  <g id="Group_2773" data-name="Group 2773" transform="translate(-5361 -2731)">
+    <g id="Group_2771" data-name="Group 2771" transform="translate(5095 2484)">
+      <g id="Component_20_25" data-name="Component 20 – 25" transform="translate(266 247)">
+        <path id="Polygon_1" data-name="Polygon 1" d="M56.5,0,113,97H0Z" transform="translate(307 534) rotate(180)" fill="#08588b"/>
+        <g id="Group_530" data-name="Group 530">
+          <rect id="Rectangle_451" data-name="Rectangle 451" width="501" height="437" rx="60" fill="#08588b"/>
+        </g>
+      </g>
+      <g id="Icon_material-place" data-name="Icon material-place" transform="translate(396.982 295.511)">
+        <path id="Icon_material-place-2" data-name="Icon material-place" d="M127.161,3C61.006,3,7.5,56.144,7.5,121.852c0,89.139,119.661,220.726,119.661,220.726S246.822,210.992,246.822,121.852C246.822,56.144,193.316,3,127.161,3Zm0,161.3A42.448,42.448,0,1,1,169.9,121.852,42.608,42.608,0,0,1,127.161,164.3Z" transform="translate(-7.5 -3)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="501" height="533" viewBox="0 0 501 533">
+  <g id="Group_2772" data-name="Group 2772" transform="translate(-266 -247)">
+    <g id="Component_20_26" data-name="Component 20 – 26" transform="translate(266 247)">
+      <path id="Polygon_1" data-name="Polygon 1" d="M56.5,0,113,97H0Z" transform="translate(307 533) rotate(180)" fill="#08588b"/>
+      <g id="Group_530" data-name="Group 530">
+        <rect id="Rectangle_451" data-name="Rectangle 451" width="501" height="436" rx="60" fill="#08588b"/>
+      </g>
+    </g>
+    <g id="Icon_material-gps-fixed" data-name="Icon material-gps-fixed" transform="translate(363 295)">
+      <path id="Icon_material-gps-fixed-2" data-name="Icon material-gps-fixed" d="M163.113,104.345a58.768,58.768,0,1,0,58.768,58.768A58.752,58.752,0,0,0,163.113,104.345ZM294.46,148.421A132.145,132.145,0,0,0,177.805,31.766V1.5H148.421V31.766A132.145,132.145,0,0,0,31.766,148.421H1.5v29.384H31.766A132.145,132.145,0,0,0,148.421,294.46v30.266h29.384V294.46A132.145,132.145,0,0,0,294.46,177.805h30.266V148.421ZM163.113,265.957A102.845,102.845,0,1,1,265.957,163.113,102.769,102.769,0,0,1,163.113,265.957Z" transform="translate(-1.5 -1.5)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
